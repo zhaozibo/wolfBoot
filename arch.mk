@@ -263,6 +263,17 @@ ifeq ($(ARCH),ARM)
 
   endif
 
+  ifeq ($(TARGET),stm32n6)
+    CORTEX_M33=1
+    CFLAGS+=-Ihal -mcpu=cortex-m55
+    LDFLAGS+=-mcpu=cortex-m55
+    ARCH_FLASH_OFFSET=0x70000000
+    WOLFBOOT_ORIGIN=0x34000000
+    EXT_FLASH=1
+    PART_UPDATE_EXT=1
+    PART_SWAP_EXT=1
+  endif
+
   ifeq ($(TARGET),rp2350)
     CORTEX_M33=1
     CFLAGS+=-Ihal
